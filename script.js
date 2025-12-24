@@ -1,4 +1,3 @@
-
 // filepath: script.js
 // ตัวแปรเก็บตัวเลขลับ
 let secretNumber = 0;
@@ -6,20 +5,20 @@ let secretNumber = 0;
 let attemptCount = 0;
 // ฟังก์ชันเริ่มเกมใหม่
 function initializeGame() {
- secretNumber = Math.floor(Math.random() * 100) + 1;
- attemptCount = 0;
- updateDisplay();
-// filepath: script.js
-// ...existing code...
-// ฟังก์ชันตรวจสอบการทาย
-function checkGuess() {
+  secretNumber = Math.floor(Math.random() * 100) + 1;
+  attemptCount = 0;
+  updateDisplay();
+  // filepath: script.js
+  // ...existing code...
+  // ฟังก์ชันตรวจสอบการทาย
+  function checkGuess() {
     const guessInput = document.getElementById("guessInput");
     const guessValue = parseInt(guessInput.value);
     const resultContainer = document.getElementById("resultContainer");
     // ... validation code ...
     attemptCount++; // เพิ่มตรงนี้
     if (guessValue === secretNumber) {
-    resultContainer.innerHTML = `
+      resultContainer.innerHTML = `
     <div class="alert alert-success" role="alert">
     <h5>✓ ถูกต้อง!</h5>
     <p>คุณทายถูกในครั้งที่ ${attemptCount}</p>
@@ -27,63 +26,63 @@ function checkGuess() {
     `;
     }
     // ... rest of code ...
-   }
-    // Validation: ตรวจสอบว่าใส่ตัวเลขหรือไม่
-    if (isNaN(guessValue) || guessInput.value === "") {
+  }
+  // Validation: ตรวจสอบว่าใส่ตัวเลขหรือไม่
+  if (isNaN(guessValue) || guessInput.value === "") {
     resultContainer.innerHTML = `
     <div class="alert alert-danger" role="alert">
     กรุณาใส่ตัวเลข!
     </div>
     `;
     return;
-    }
-    // Validation: ตรวจสอบว่าอยู่ในช่วง 1-100 หรือไม่
-    if (guessValue < 1 || guessValue > 100) {
+  }
+  // Validation: ตรวจสอบว่าอยู่ในช่วง 1-100 หรือไม่
+  if (guessValue < 1 || guessValue > 100) {
     resultContainer.innerHTML = `
     <div class="alert alert-danger" role="alert">
     กรุณาใส่ตัวเลขระหว่าง 1 ถึง 100!
     </div>
     `;
     return;
-    }
-    attemptCount++;
-    if (guessValue === secretNumber) {
+  }
+  attemptCount++;
+  if (guessValue === secretNumber) {
     resultContainer.innerHTML = `
     <div class="alert alert-success" role="alert">
     <h5>✓ ถูกต้อง!</h5>
     <p>คุณทายถูกในครั้งที่ ${attemptCount}</p>
     </div>
     `;
-    } else if (guessValue > secretNumber) {
+  } else if (guessValue > secretNumber) {
     resultContainer.innerHTML = `
     <div class="alert alert-warning" role="alert">
     ↓ ตัวเลขสูงไป
     </div>
     `;
-    } else {
+  } else {
     resultContainer.innerHTML = `
     <div class="alert alert-info" role="alert">
     ↑ ตัวเลขตํ่าไป
     </div>
     `;
-    }
-    updateDisplay();
-    guessInput.value = "";
-    guessInput.focus();
+  }
+  updateDisplay();
+  guessInput.value = "";
+  guessInput.focus();
 }
-   // ...existing code...
+// ...existing code...
 // ฟังก์ชันอัปเดตจํานวนครั้ง
 // ฟังก์ชันอัปเดตจํานวนครั้ง
 function updateDisplay() {
-    const attemptsContainer = document.getElementById("attemptsContainer");
-    attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
-   }
+  const attemptsContainer = document.getElementById("attemptsContainer");
+  attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
+}
 // ฟังก์ชันเริ่มเกมใหม่
 function resetGame() {
- initializeGame();
- document.getElementById("resultContainer").innerHTML = "";
- document.getElementById("guessInput").value = "";
- document.getElementById("guessInput").focus();
+  initializeGame();
+  document.getElementById("resultContainer").innerHTML = "";
+  document.getElementById("guessInput").value = "";
+  document.getElementById("guessInput").focus();
 }
 // เริ่มเกมเมื่อโหลดหน้า
 window.addEventListener("load", initializeGame);
@@ -92,17 +91,28 @@ window.addEventListener("load", initializeGame);
 // ...existing code...
 // ฟังก์ชันเริ่มเกมใหม่
 function resetGame() {
- initializeGame();
- document.getElementById("resultContainer").innerHTML = "";
- document.getElementById("guessInput").value = "";
- document.getElementById("guessInput").focus();
+  initializeGame();
+  document.getElementById("resultContainer").innerHTML = "";
+  document.getElementById("guessInput").value = "";
+  document.getElementById("guessInput").focus();
 }
 // ...existing code...
 
 // เพิ่มการ select text เมื่อคลิก input
 document.addEventListener("DOMContentLoaded", function () {
- const guessInput = document.getElementById("guessInput");
- guessInput.addEventListener("focus", function () {
- this.select();
- });
+  const guessInput = document.getElementById("guessInput");
+  guessInput.addEventListener("focus", function () {
+    this.select();
+  });
+});
+
+// เพิ่มการรองรับ Enter key
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("guessInput")
+    .addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        checkGuess();
+      }
+    });
 });
