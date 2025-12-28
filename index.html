@@ -1,4 +1,3 @@
-<!-- filepath: index.html -->
 <!DOCTYPE html>
 <html lang="th">
   <head>
@@ -18,7 +17,19 @@
           <div class="card shadow">
             <div class="card-body">
               <h1 class="card-title text-center">เกมส์ทายตัวเลข</h1>
-              <p class="text-center text-muted">ทายตัวเลขตั ้งแต่ 1 ถึง 100</p>
+              <label class="form-label">ทายตัวเลขตั้งแต่ : </label>
+              <select
+                onclick="initializeGame()"
+                name="randomNumber"
+                id="randomNumber"
+                class="form-control text-center text-muted"
+              >
+                <option value="">-- เลือกระดับความยาก --</option>
+                <option value="randomToTen">1-10</option>
+                <option value="randomToFify">1-50</option>
+                <option value="randomToOneHundred">1-100</option>
+                <option value="randomToOneThousand">1-1000</option>
+              </select>
               <div class="mb-3">
                 <label for="guessInput" class="form-label">พิมพ์ตัวเลข:</label>
                 <input
