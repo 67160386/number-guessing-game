@@ -1,7 +1,7 @@
 // filepath: script.js
 // ตัวแปรเก็บตัวเลขลับ
 let secretNumber = 0;
-// ตัวแปรนับจํานวนครั้งที่ทาย
+// ตัวแปรนับจํานวนครั ้งที ่ทาย
 let attemptCount = 0;
 // ฟังก์ชันเริ่มเกมใหม่
 function initializeGame() {
@@ -14,9 +14,9 @@ function checkGuess() {
   const guessInput = document.getElementById("guessInput");
   const guessValue = parseInt(guessInput.value);
   const resultContainer = document.getElementById("resultContainer");
-  attemptCount++;
+  attemptCount++; //เพิ่มครงนี้
   if (guessValue === secretNumber) {
-    resultContainer.innerHTML = `
+    resultContainer.innerHTML = ` 
  <div class="alert alert-success" role="alert">
  <h5>✓ ถูกต้อง!</h5>
  <p>คุณทายถูกในครั้งที่ ${attemptCount}</p>
@@ -42,7 +42,7 @@ function checkGuess() {
 // ฟังก์ชันอัปเดตจํานวนครั้ง
 function updateDisplay() {
   const attemptsContainer = document.getElementById("attemptsContainer");
-  attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
+  attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั ้ง`;
 }
 // ฟังก์ชันเริ่มเกมใหม่
 function resetGame() {
