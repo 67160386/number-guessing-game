@@ -42,7 +42,7 @@ function checkGuess() {
 // ฟังก์ชันอัปเดตจํานวนครั้ง
 function updateDisplay() {
   const attemptsContainer = document.getElementById("attemptsContainer");
-  attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั ้ง`;
+  attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
 }
 // ฟังก์ชันเริ่มเกมใหม่
 function resetGame() {
@@ -53,3 +53,11 @@ function resetGame() {
 }
 // เริ่มเกมเมื่อโหลดหน้า
 window.addEventListener("load", initializeGame);
+
+// เพิ่มการ select text เมื่อคลิก input
+document.addEventListener("DOMContentLoaded", function () {
+ const guessInput = document.getElementById("guessInput");
+ guessInput.addEventListener("focus", function () {
+ this.select();
+ });
+});
